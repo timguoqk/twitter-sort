@@ -1,11 +1,3 @@
-# Twitter-Sort
-# main.py
-# Aaron Taylor
-#
-# This sorting technique allows a program to pass this script a list of
-# numbers, and be returned the sorted version of them. This works by tweeting
-# the list to Twitter asking for them to be sorted, and when there is a
-# reply, we check to ensure they're sorted. If they are, we return.
 
 import tweepy
 import sys
@@ -18,7 +10,9 @@ if len(sys.argv) == 1:
     print("Arguments required!")
     sys.exit()
 
-numbers = eval("".join(sys.argv[1:]))
+# Using syntax like 1,2,3,4;5,6,7,8;2,200,3,4;12,3,4,5; 100 <- this is C
+cities = eval("".join(sys.argv[1:]))
+C = eval("".join(sys.argv[2:]))
 
 auth = tweepy.OAuthHandler(settings.API_KEY, settings.API_SECRET)
 
@@ -51,7 +45,8 @@ else:
 
 api = tweepy.API(auth)
 
-tweetID = api.update_status("Can you sort these numbers? " + str(numbers)).id
+tweetID = api.update_status(
+    "TSP: For cities " + cities + ", is there a path w/ dist<" + C + "?").id
 
 
 class ReplyListener(tweepy.StreamListener):
@@ -115,3 +110,13 @@ class ReplyListener(tweepy.StreamListener):
 listener = tweepy.streaming.Stream(auth, ReplyListener())
 # Listen for a response to the user
 listener.filter(track=["@" + api.me().screen_name])
+
+# Based on 
+# Twitter-Sort
+# main.py
+# Aaron Taylor
+#
+# This sorting technique allows a program to pass this script a list of
+# numbers, and be returned the sorted version of them. This works by tweeting
+# the list to Twitter asking for them to be sorted, and when there is a
+# reply, we check to ensure they're sorted. If they are, we return.
