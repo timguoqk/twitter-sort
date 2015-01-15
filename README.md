@@ -1,10 +1,10 @@
-Twitter Sort
+Twitter Travel Salesman
 ==========
 
-Twitter Sort is a sorting algorithm that takes advantage of the Twitter API.
-You pass the script the numbers you would like sorted and it will tweet
-a request asking for somebody to sort them. When someone replies with
-a sorted version of the numbers, it will print them to the console 
+Twitter Travel Salesman is an algorithm that takes advantage of the Twitter API.
+You pass the TSP you would like to solve and it will tweet
+a request asking for somebody to solve them. When someone replies with
+a solution of the numbers, it will print them to the console 
 and return.
 
 Setup
@@ -25,8 +25,4 @@ API_SECRET with your own key.
 Example
 -------
 
-```shell
-$ python main.py 99,9001,1337,8008,301
-```
-
-![a twitter-sort example](https://raw.githubusercontent.com/ExPHAT/twitter-sort/master/demo.png)
+No examples yet!
